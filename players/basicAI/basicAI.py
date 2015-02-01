@@ -1,12 +1,17 @@
+"""
+basicAI logic: it will sharpen on the first turn and then block
+until the opponent reaches a dull stick.  Then it will poke.
+If that fails, it will sharpen again and repeat.
+"""
+
 import sys
 import functools
 
-#inp = sys.stdin.read()
+inp = sys.stdin.read()
+my_move, opp_move = inp.split(',')[0], inp.split(',')[1]
 
-#my_move, opp_move = inp.split(',')[0], inp.split(',')[1]
-
-my_move = 'PPPSSSPPPPPSSP' #expected 1
-opp_move = 'PSSPS' #expected 2
+#my_move = 'PPPSSSPPPPPSSPP' #expected 1
+#opp_move = 'PSSPSPP' #expected 2
 
 def get_sharpness(move_sequence: str):
 	sharpness = 0
@@ -26,6 +31,10 @@ def change_in_sharp(current_sharp: int, action: str):
 #current_sharp = functools.reduce(change_in_sharp, my_move) #don't use reduce() in an example for beginners, it's more obscure to them.
 #
 
-current_sharp = get_sharpness(my_move)
-
-print(current_sharp)
+if get_sharpness(opp_move) > 0:
+	print('B')
+else:
+	if get_sharpness(my_move) == 0:
+		print('S')
+	else:
+		print('P')
