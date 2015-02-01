@@ -1,3 +1,7 @@
 import sys
+import random
 
-print('S')
+if random.random() < 0.15:
+	print('P')
+else:
+	print('S')

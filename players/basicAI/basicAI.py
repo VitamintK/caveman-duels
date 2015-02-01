@@ -7,8 +7,8 @@ If that fails, it will sharpen again and repeat.
 import sys
 import functools
 
-inp = sys.stdin.read()
-my_move, opp_move = inp.split(',')[0], inp.split(',')[1]
+inp = sys.argv[1] if len(sys.argv) > 1 else ','
+my_move, opp_move = inp.split(',')
 
 #my_move = 'PPPSSSPPPPPSSPP' #expected 1
 #opp_move = 'PSSPSPP' #expected 2
